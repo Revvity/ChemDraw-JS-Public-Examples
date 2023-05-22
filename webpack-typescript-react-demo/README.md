@@ -21,7 +21,11 @@ You should have received three files as part of your ChemDraw JS subscription:
 
 For this demo, copy the license and npm package into /dependencies. The npm package will need to be renamed as `chemdraw-js.tgz`.
 
-For full functionality, the web service will need to be run using Docker. Map port 80 in the Docker image to 8080 on your machine.
+For full functionality, the web service will need to be run using Docker. Map port 80 in the Docker image to 8080 on your machine, e.g.:
+```
+docker load --input chemdraw-web-service-2.2.0-develop-1150.tar.gz
+docker run -d -p 8080:80 pkiinformatics/chemdraw-web-service:2.2.0-develop-1150
+```
 
 ## Bundling with Webpack
 
