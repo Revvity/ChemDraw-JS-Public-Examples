@@ -23,6 +23,9 @@ export interface ChemDrawEditorProps {
   onReady?: (cdjs: perkinelmer.ChemDrawDirect) => void;
 }
 
+/**
+ * A component that wraps CDJS, handling the lifetime correctly
+ */
 export function ChemDrawEditor({ onReady }: ChemDrawEditorProps): JSX.Element {
   const cdjsContainerRef = useRef<HTMLDivElement | null>(null);
   const [cdjs, setCDJS] = useState<perkinelmer.ChemDrawDirect | null>(null);
