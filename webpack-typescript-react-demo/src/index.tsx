@@ -6,22 +6,13 @@
 
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-import { ChemDrawEditor } from "./ChemDrawEditor";
+import { App } from "./App";
 
-import "./index.css";
-
-function Root() {
-  return (
-    <div className="Root">
-      <h1>webpack-typescript-react-demo</h1>
-      <ChemDrawEditor />
-    </div>
-  );
-}
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <Root />
+    <App />
   </React.StrictMode>
 );

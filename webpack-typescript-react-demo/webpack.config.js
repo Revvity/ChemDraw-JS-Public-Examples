@@ -21,6 +21,7 @@ module.exports = {
     static: "./dist",
     port: 3000,
   },
+  devtool: "source-map",
   plugins: [
     new CleanWebpackPlugin(),
 
@@ -49,11 +50,7 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: [
-          {
-            loader: "ts-loader",
-          },
-        ],
+        use: ["ts-loader"],
         exclude: /node_modules/,
       },
       {
