@@ -3,7 +3,7 @@
   <head>
     <title>ChemDraw JS Quick Start</title>
     <!-- Load the ChemDraw JS Library -->
-    <script src="asset/chemdrawweb/chemdrawweb.js"></script>
+    <script src="http:/assets/chemdrawweb/chemdrawweb.js"></script>
   </head>
   <body>
     <!-- Create a div to attach the ChemDraw JS component to -->
@@ -20,9 +20,15 @@
         console.error("Could not attach ChemDraw JS", error.message);
       }
 
-      fetch("asset/chemdraw-js-license.xml").then((res) => res.text()).then((license) => {
-        fetch("chemdraw-js.config.json").then(response => response.json()).then(config => {
-          // Attach ChemDraw JS to the container, providing our callbacks and the URL for the license file
+      (async function () {
+        try {
+          const licenseResponse = await fetch("assets/chemdraw-js-license.xml");
+          const license = await licenseResponse.text();
+      
+          const configResponse = await fetch("assets/chemdraw-js.config.json");
+          const config = await configResponse.json();
+          
+          // Attach ChemDraw JS to the container, providing our callbacks and the license file
           perkinelmer.ChemdrawWebManager.attach({
             id: "chemdrawjs-container",
             callback: onAttached,
@@ -30,8 +36,10 @@
             license: license,
             config: config
           })
-        });
-      }).catch((e) => console.error(e));
+        } catch (error) {
+          console.log(error);
+        }
+      })();
     </script>
   </body>
 </html>

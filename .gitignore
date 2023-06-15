@@ -7,7 +7,6 @@
 /**/build/
 /**/dist/
 /**/.cache
-/**/asset/
 
 # Misc
 /**/.DS_Store/
