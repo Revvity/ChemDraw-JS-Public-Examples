@@ -1,7 +1,7 @@
 # vanilla-javascript-demo
 Example of how to use the ChemDraw JS library with vanilla JavaScript and HTML5.
 
-This example demonstrates how to use load the ChemDraw JS library when installed as an NPM package. It is based on the example in the __ChemDraw JS Developer's Guide__. For a project without NPM the same code can be used, just change the URL to the library as appropriate.
+This example demonstrates how to load the ChemDraw JS library when installed as an NPM package. It is based on the example in the __ChemDraw JS Developer's Guide__. For a project without NPM the same code can be used, just change the URL to the library as appropriate.
 
 For this demo, copy the license into /dependencies.
 
