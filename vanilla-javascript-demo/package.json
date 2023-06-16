@@ -8,7 +8,7 @@
     "start": "parcel index.html --open"
   },
   "dependencies": {
-    "@pki-chemistry/chemdraw-js": "22.3.0-develop-4580"
+    "@pki-chemistry/chemdraw-js": "file:../dependencies/chemdraw-js.tgz"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.5",
