@@ -31,6 +31,7 @@ docker run -d -p 8080:80 pkiinformatics/chemdraw-web-service:2.2.0-develop-1150
 ```
 
 ## Bundling with Parcel
+
 Parcel is billed as a "zero configuration web application bundler". This zero configuration philosophy causes issues with ChemDraw JS, since any attempt to reference the library from code will cause it to attempt to bundle the library which breaks the internal dynamic loading of assets.
 
 To work around this problem ensure that the script tag in the html entry point of the application uses a qualified http location to the library. By prefixing the URL with http, parcel will ignore the URL. In our example you can see we use:
