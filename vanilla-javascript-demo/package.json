@@ -1,0 +1,17 @@
+{
+  "name": "vanilla-javascript-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Example of building ChemDraw JS application with JavaScript",
+  "scripts": {
+    "start": "serve",
+    "postinstall": "cpr ../dependencies/chemdraw-js-license.xml  assets/ -o"
+  },
+  "dependencies": {
+    "@pki-chemistry/chemdraw-js": "file:../dependencies/chemdraw-js.tgz"
+  },
+  "devDependencies": {
+    "cpr": "^3.0.1",
+    "serve": "^14.2.0"
+  }
+}

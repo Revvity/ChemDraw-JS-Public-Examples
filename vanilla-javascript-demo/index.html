@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ChemDraw JS Demo</title>
+    <!-- Load the ChemDraw JS Library -->
+    <script src="node_modules/@pki-chemistry/chemdraw-js/dist/chemdrawweb/chemdrawweb.js"></script>
+  </head>
+  <body>
+    <!-- Create a div to attach the ChemDraw JS component to -->
+    <div
+      id="chemdrawjs-container" 
+      style="width: 640px; height: 480px;">
+    </div>
+    <script>
+      function onAttached(chemdraw) {
+        console.log("ChemDraw JS attached successfully");
+      }
+
+      function onAttachFailed(error) {
+        console.error("Could not attach ChemDraw JS", error.message);
+      }
+
+      (async function () {
+        try {
+          const licenseResponse = await fetch("assets/chemdraw-js-license.xml");
+          const license = await licenseResponse.text();
+      
+          const configResponse = await fetch("chemdraw-js.config.json");
+          const config = await configResponse.json();
+          
+          // Attach ChemDraw JS to the container, providing our callbacks and the license file
+          perkinelmer.ChemdrawWebManager.attach({
+            id: "chemdrawjs-container",
+            callback: onAttached,
+            errorCallback: onAttachFailed,
+            license: license,
+            config: config
+          })
+        } catch (error) {
+          console.log(error);
+        }
+      })();
+    </script>
+  </body>
+</html>

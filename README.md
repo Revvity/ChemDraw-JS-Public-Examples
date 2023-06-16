@@ -8,6 +8,10 @@ This repository contains examples of simple applications built using ChemDraw JS
 
 A simple application that uses webpack, TypeScript and React. Shows how to configure Webpack to load ChemDraw JS.
 
+### Vanilla JavaScript
+
+An example of how to use the ChemDraw JS library with vanilla JavaScript and HTML5.
+
 ## FAQ
 
 ### Is there an installer for ChemDraw JS?
