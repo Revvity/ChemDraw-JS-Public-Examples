@@ -4,7 +4,7 @@ Example of how to use the ChemDraw JS library with vanilla JavaScript and HTML5.
 
 This example demonstrates how to load the ChemDraw JS library when installed as an npm package. It is based on the example in the __ChemDraw JS Developer's Guide__. For a project without npm the same code can be used, just change the URL to the library as appropriate.
 
-# Getting started with ChemDraw JS and Parcel
+# Getting started with ChemDraw JS
 
 ## Installing ChemDraw JS
 
@@ -22,34 +22,18 @@ docker load --input chemdraw-web-service-2.2.0-develop-1150.tar.gz
 docker run -d -p 8080:80 pkiinformatics/chemdraw-web-service:2.2.0-develop-1150
 ```
 
-## Bundling with Parcel
-
-You can then use the static-files-copy plugin and a small piece of configuration added to package.json to automate the process of copying the ChemDraw JS library as part of the bundling process.
+You can use the cpr plugin and a small piece of configuration added to package.json to automate the process of copying license to where you need it.
 
 Install the plugin using as a development dependency:
 
-`npm install --save-dev parcel-plugin-static-files-copy`
+`npm install --save-dev cpr`
 
 Configure the plugin by adding the following entry to your project's package.json:
 
 ```
-"staticFiles": {
-    "staticPath": [
-      {
-        "staticPath": "../dependencies/chemdraw-js-license.xml",
-        "staticOutDir": "assets"
-      },
-      {
-        "staticPath": "chemdraw-js.config.json",
-        "staticOutDir": "assets"
-      },
-      {
-        "staticPath": "node_modules/@pki-chemistry/chemdraw-js/dist/chemdrawweb",
-        "staticOutDir": "assets/chemdrawweb"
-      }
-    ],
-    "watcherGlob": "**"
-}
+  "scripts": {
+    "postinstall": "cpr ../dependencies/chemdraw-js-license.xml  assets/ -o"
+  }
 ```
 
 ## Running ChemDraw JS

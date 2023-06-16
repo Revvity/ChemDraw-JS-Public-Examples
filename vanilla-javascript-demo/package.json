@@ -4,32 +4,14 @@
   "private": true,
   "description": "Example of building ChemDraw JS application with JavaScript",
   "scripts": {
-    "build": "parcel build index.html",
-    "start": "parcel index.html --open"
+    "start": "serve",
+    "postinstall": "cpr ../dependencies/chemdraw-js-license.xml  assets/ -o"
   },
   "dependencies": {
     "@pki-chemistry/chemdraw-js": "file:../dependencies/chemdraw-js.tgz"
   },
   "devDependencies": {
-    "parcel-bundler": "^1.12.5",
-    "parcel-plugin-static-files-copy": "^2.6.0",
+    "cpr": "^3.0.1",
     "serve": "^14.2.0"
-  },
-  "staticFiles": {
-    "staticPath": [
-      {
-        "staticPath": "../dependencies/chemdraw-js-license.xml",
-        "staticOutDir": "assets"
-      },
-      {
-        "staticPath": "chemdraw-js.config.json",
-        "staticOutDir": "assets"
-      },
-      {
-        "staticPath": "node_modules/@pki-chemistry/chemdraw-js/dist/chemdrawweb",
-        "staticOutDir": "assets/chemdrawweb"
-      }
-    ],
-    "watcherGlob": "**"
   }
 }

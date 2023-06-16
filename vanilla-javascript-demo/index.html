@@ -3,7 +3,7 @@
   <head>
     <title>ChemDraw JS Demo</title>
     <!-- Load the ChemDraw JS Library -->
-    <script src="http:/assets/chemdrawweb/chemdrawweb.js"></script>
+    <script src="node_modules/@pki-chemistry/chemdraw-js/dist/chemdrawweb/chemdrawweb.js"></script>
   </head>
   <body>
     <!-- Create a div to attach the ChemDraw JS component to -->
@@ -25,7 +25,7 @@
           const licenseResponse = await fetch("assets/chemdraw-js-license.xml");
           const license = await licenseResponse.text();
       
-          const configResponse = await fetch("assets/chemdraw-js.config.json");
+          const configResponse = await fetch("chemdraw-js.config.json");
           const config = await configResponse.json();
           
           // Attach ChemDraw JS to the container, providing our callbacks and the license file
