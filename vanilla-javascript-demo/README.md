@@ -22,20 +22,6 @@ docker load --input chemdraw-web-service-2.2.0-develop-1150.tar.gz
 docker run -d -p 8080:80 pkiinformatics/chemdraw-web-service:2.2.0-develop-1150
 ```
 
-You can use the cpr plugin and a small piece of configuration added to package.json to automate the process of copying license to where you need it.
-
-Install the plugin using as a development dependency:
-
-`npm install --save-dev cpr`
-
-Configure the plugin by adding the following entry to your project's package.json:
-
-```
-  "scripts": {
-    "postinstall": "cpr ../dependencies/chemdraw-js-license.xml  assets/ -o"
-  }
-```
-
 ## Running ChemDraw JS
 
 To run the demo using a terminal starting at the repository root directory:
