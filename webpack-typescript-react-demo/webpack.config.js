@@ -1,7 +1,7 @@
 //
 // webpack.config.js
 //
-// Copyright © 2023 PerkinElmer, Inc. All rights reserved.
+// Copyright © 2023 Revvity Signals Software, Inc. All rights reserved.
 //
 
 const path = require("path");
