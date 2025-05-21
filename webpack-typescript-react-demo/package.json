@@ -8,7 +8,6 @@
     "start": "webpack serve --mode development --open"
   },
   "dependencies": {
-    "@pki-chemistry/chemdraw-js": "file:../dependencies/chemdraw-js.tgz",
     "axios": "^1.4.0",
     "bootstrap": "^5.2.3",
     "react": "^18.2.0",

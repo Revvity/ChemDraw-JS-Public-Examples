@@ -30,7 +30,7 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         {
-          from: "node_modules/@pki-chemistry/chemdraw-js/dist/chemdrawweb",
+          from: "node_modules/@revvity-signals/chemdraw-js/dist/chemdrawweb",
           to: "assets/chemdrawweb",
         },
       ],
