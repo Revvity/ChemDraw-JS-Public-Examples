@@ -1,21 +1,21 @@
 # Dependencies
-/**/node_modules/
+node_modules/
 /dependencies/
 !/dependencies/README.md
 
 # npm package build
-/**/build/
-/**/dist/
-/**/.cache
-/**/assets/
+build/
+dist/
+.cache
+assets/
 
 # Misc
-/**/.DS_Store/
-/**/.env.local
-/**/.env.development.local
-/**/.env.test.local
-/**/.env.production.local
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-/**/npm-debug.log*
-/**/yarn-debug.log*
-/**/yarn-error.log*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

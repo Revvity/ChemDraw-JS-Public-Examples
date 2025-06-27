@@ -15,34 +15,39 @@ import { PropertyCard } from "../PropertyCard";
  * give information about the structures that have been drawn.
  */
 export function App(): JSX.Element {
-  // Capture a ref to our CDJS instance so we can call it later
-  const cdjsRef = useRef<perkinelmer.ChemDrawDirect | null>(null);
+  // Capture a ref to our CDJS editor instance so we can call it later
+  const cdjsRef = useRef<RevvitySignals.ChemDrawJS.Editor | null>(null);
 
   // Track our component state
-  const [fragments, setFragments] = useState<perkinelmer.FragmentInfo[]>([]);
+  const [structureProperties, setStructureProperties] = useState<
+    RevvitySignals.ChemDrawJS.StructureProperties[]
+  >([]);
 
   const handleDocumentChange = useCallback(() => {
     (async () => {
       // When the document changes, call the CDJS API to get a list of fragments
       // (structures) in the document. We will then show information about all of these.
       try {
-        if (cdjsRef.current) {
-          const fragmentsInfo =
-            await cdjsRef.current.api2.drawing.getFragmentsInfo();
-          setFragments(fragmentsInfo);
+        const { current: editor } = cdjsRef;
+        if (editor) {
+          const structures = await editor.drawing.getStructureIDs();
+          const properties = await editor.drawing.getStructureProperties(
+            structures
+          );
+          setStructureProperties(properties);
         }
       } catch (e) {
-        console.error("Error getting document CDXML:", e);
+        console.error("Error getting structure properties:", e);
       }
     })();
   }, [cdjsRef]);
 
   const handleReady = useCallback(
-    (newCDJSInstance: perkinelmer.ChemDrawDirect) => {
-      cdjsRef.current = newCDJSInstance;
+    (editor: RevvitySignals.ChemDrawJS.Editor) => {
+      cdjsRef.current = editor;
 
       // Listen for changes to the document
-      newCDJSInstance.api2.drawing.onContentChange = handleDocumentChange;
+      editor.drawing.onContentChange = handleDocumentChange;
     },
     []
   );
@@ -58,7 +63,7 @@ export function App(): JSX.Element {
       <ChemDrawEditor onReady={handleReady} />
 
       <Container fluid className="mt-2">
-        <PropertyCards fragments={fragments} />
+        <PropertyCards structures={structureProperties} />
       </Container>
     </Stack>
   );
@@ -68,16 +73,16 @@ export function App(): JSX.Element {
  * Render a list of property cards, one for each fragment
  */
 function PropertyCards({
-  fragments,
+  structures,
 }: {
-  fragments: perkinelmer.FragmentInfo[];
+  structures: RevvitySignals.ChemDrawJS.StructureProperties[];
 }) {
   return (
     <Row xs={2} md={6} className="g-4">
-      {fragments.map((fragment, index) => {
+      {structures.map((structure, index) => {
         return (
           <Col key={index}>
-            <PropertyCard cdxml={fragment.cdxml} />
+            <PropertyCard cdxml={structure.cdxml!} />
           </Col>
         );
       })}

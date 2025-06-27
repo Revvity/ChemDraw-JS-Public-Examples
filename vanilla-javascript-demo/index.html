@@ -3,39 +3,26 @@
   <head>
     <title>ChemDraw JS Demo</title>
     <!-- Load the ChemDraw JS Library -->
-    <script src="node_modules/@pki-chemistry/chemdraw-js/dist/chemdrawweb/chemdrawweb.js"></script>
+    <script src="node_modules/@revvity-signals/chemdraw-js/dist/chemdrawweb/chemdrawweb.js"></script>
   </head>
   <body>
     <!-- Create a div to attach the ChemDraw JS component to -->
-    <div
-      id="chemdrawjs-container" 
-      style="width: 640px; height: 480px;">
-    </div>
+    <div id="chemdrawjs-container" style="width: 640px; height: 480px"></div>
     <script>
-      function onAttached(chemdraw) {
-        console.log("ChemDraw JS attached successfully");
-      }
-
-      function onAttachFailed(error) {
-        console.error("Could not attach ChemDraw JS", error.message);
-      }
-
-      (async function () {
+      (async () => {
         try {
           const licenseResponse = await fetch("assets/chemdraw-js-license.xml");
           const license = await licenseResponse.text();
-      
-          const configResponse = await fetch("chemdraw-js.config.json");
-          const config = await configResponse.json();
-          
+          const element = document.getElementById("chemdrawjs-container");
+
           // Attach ChemDraw JS to the container, providing our callbacks and the license file
-          perkinelmer.ChemdrawWebManager.attach({
-            id: "chemdrawjs-container",
-            callback: onAttached,
-            errorCallback: onAttachFailed,
-            license: license,
-            config: config
-          })
+          await RevvitySignals.ChemDrawJS.attach({
+            license,
+            chemistryServiceURL: "http://localhost:8080/1.0",
+            editor: {
+              element,
+            },
+          });
         } catch (error) {
           console.log(error);
         }

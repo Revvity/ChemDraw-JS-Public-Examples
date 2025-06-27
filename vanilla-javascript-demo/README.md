@@ -14,7 +14,11 @@ You should have received three files as part of your ChemDraw JS subscription:
 2. A license as an XML file
 3. A ChemDraw Web Service (CDWS) docker image
 
-For this demo, copy the license and npm package into /dependencies. The npm package will need to be renamed as `chemdraw-js.tgz`.
+For this demo:
+
+1. Copy the license into /dependencies.
+2. Run `npm install` to install dependencies
+3. Install the npm package e.g. `npm install chemdraw-js-package.tgz` replacing "chemdraw-js-package.tgz" with the path to your ChemDraw JS package.
 
 For full functionality, the web service will need to be run using Docker. Map port 80 in the Docker image to 8080 on your machine, e.g.:
 ```

@@ -7,9 +7,7 @@
     "start": "serve",
     "postinstall": "cpr ../dependencies/chemdraw-js-license.xml  assets/ -o"
   },
-  "dependencies": {
-    "@pki-chemistry/chemdraw-js": "file:../dependencies/chemdraw-js.tgz"
-  },
+  "dependencies": {},
   "devDependencies": {
     "cpr": "^3.0.1",
     "serve": "^14.2.0"
